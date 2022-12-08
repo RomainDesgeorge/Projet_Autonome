@@ -14,7 +14,8 @@ public class Lightsoff_mallassagne_desgeorge {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Partie partie = new Partie();
+        partie.lancerpartie();
     }
     
 }

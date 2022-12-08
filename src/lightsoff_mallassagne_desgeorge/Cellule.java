@@ -22,4 +22,7 @@ public class Cellule {
         }
         return verif;
     }
+    public void Changementlumiere(){
+        lumi.changementlumiere();
+    }
 }

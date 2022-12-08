@@ -18,6 +18,35 @@ public class PlateauDeJeu {
     }
     Cellule [][] grille = new Cellule[5][5];
     
+    public boolean etregagnant(){
+        boolean verif = false;
+        int a = 0;
+        for (int i=4;i>-1;i--){
+            for (int j = 0;j<5;j++){
+                if (grille[i][j].Luminosite() == false){
+                    a +=1;
+                }
+                                  
+            }
+        }
+        if (a == 25){
+            verif = true;
+        }
+        return verif;
+    }
+    
+    public boolean Luminosite(int i,int j){
+        boolean verif = false;
+        if (grille[i][j].Luminosite() == true){
+            verif = true;
+        }
+        return verif;
+    }
+    
+    public void Changementlumiere(int x, int y){
+        grille[x][y].Changementlumiere();
+    }
+    
     public void affichergrille(){
         for (int i=4;i>-1;i--){
             for (int j = 0;j<5;j++){
@@ -27,7 +56,7 @@ public class PlateauDeJeu {
                 if (grille[i][j].Luminosite() == false){
                     System.out.print("[XXX]");
                 }
-                if (i==4){
+                if (j==4){
                     System.out.println("\n");
                 }
             }
