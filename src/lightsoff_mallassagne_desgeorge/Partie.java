@@ -5,6 +5,7 @@
 package lightsoff_mallassagne_desgeorge;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  *
@@ -46,7 +47,48 @@ public class Partie {
         
         }
     }
-    public void lancerpartie(){
+    public void lancerpartie(Joueur joueur1){
+        while (joueur1.nbpieces >=100){
+        System.out.println("Que voulez vous acheter?Vous avez "+joueur1.nbpieces+" pièces.\n1 le bonus une case(250 pieces)\n2 le bonus toutecase(100 pieces)\n3 le bonus une ligne(150 pieces)\n4 le bonus une colonne(150 pieces)\n5 quitter la boutique");
+        Scanner chxxx = new Scanner (System.in);
+        int choix1 = chxxx.nextInt(); 
+        if (choix1 == 1){
+            if (joueur1.nbpieces >= 250){
+            joueur1.obtenirnbbonus_unecase();
+            joueur1.nbpieces -=250;
+            }else{
+                System.out.println("Vous n'avez pas assez de pièces");
+            }
+        }
+        if (choix1 == 2){
+            if (joueur1.nbpieces >= 100){
+            joueur1.obtenirnbbonus_toutecase();
+            joueur1.nbpieces -=100;
+            }else{
+                System.out.println("Vous n'avez pas assez de pièces");
+            }
+        }
+        if (choix1 == 3){
+            if (joueur1.nbpieces >= 150){
+            joueur1.obtenirnbbonus_uneligne();
+            joueur1.nbpieces -=150;
+            }else{
+                System.out.println("Vous n'avez pas assez de pièces");
+            }
+        }
+        if (choix1 == 4){
+            if (joueur1.nbpieces >= 150){
+            joueur1.obtenirnbbonus_unecolonne();
+            joueur1.nbpieces -=150;
+            }else{
+                System.out.println("Vous n'avez pas assez de pièces");
+            }
+        }
+        if (choix1==5){
+            break;
+        }
+        
+        }
         placerlumiere();
         plateau.affichergrille();
         while(plateau.etregagnant() == false){
@@ -87,50 +129,75 @@ public class Partie {
                 Scanner chx2 = new Scanner (System.in);
                 choix2 = chx2.nextInt(); 
                 if (choix2 == 1){
-                    int colonne = 0;
-                    int ligne = 0;
-                    while (ligne<1 || ligne>5){
-                    Scanner reponse2 = new Scanner (System.in);
-                    System.out.println("Dans quelle ligne voulez vous placer votre jeton?");
-                    ligne = reponse2.nextInt();
-                    }
-                    while (colonne<1 || colonne>5){
-                    Scanner reponse1 = new Scanner (System.in);
-                    System.out.println("Dans quelle colonne voulez vous placer votre jeton?");
-                    colonne = reponse1.nextInt();                    
+                    if (joueur1.nbbonus_unecase !=0){
+                        int colonne = 0;
+                        int ligne = 0;
+                        while (ligne<1 || ligne>5){
+                        Scanner reponse2 = new Scanner (System.in);
+                        System.out.println("Dans quelle ligne voulez vous placer votre jeton?");
+                        ligne = reponse2.nextInt();
+                        }
+                        while (colonne<1 || colonne>5){
+                        Scanner reponse1 = new Scanner (System.in);
+                        System.out.println("Dans quelle colonne voulez vous placer votre jeton?");
+                        colonne = reponse1.nextInt();
+                        }                    
                     plateau.Changementlumiere(ligne-1, colonne-1);
+                    joueur1.utilisernbbonus_unecase();
+                    }
+                    else{
+                        System.out.println("Mon poto t'en as pas cheh");
+                    }                    
                 }
                 if (choix2 == 2){
-                   for (int i = 4;i>-1;i--){
-                       for (int j = 0;j<5;j++){
-                           plateau.Changementlumiere(i, j);
-                       }
-                   }
+                    if (joueur1.nbbonus_toutecase !=0){
+                        for (int i = 4;i>-1;i--){
+                            for (int j = 0;j<5;j++){
+                               plateau.Changementlumiere(i, j);
+                            }
+                        }
+                    joueur1.utilisernbbonus_toutecase();
+                    }
+                    else{
+                        System.out.println("Mon poto t'en as pas cheh");
+                    }                   
                 }
 
                 if (choix2 == 3){
-                    int ligne2 = 10;
-                    while (ligne2<1 || ligne2>5){
-                    Scanner reponse2 = new Scanner (System.in);
-                    System.out.println("Dans quelle ligne voulez vous placer votre jeton?");
-                    ligne2 = reponse2.nextInt();
-                    } 
-                    for (int i = 0;i<5;i++){
-                        plateau.Changementlumiere(ligne2-1, i);
-                    } 
-                }
-                if (choix2 == 4){
-                    int colonne2 = 10;
-                    while (colonne2<1 || colonne2>5){
-                    Scanner reponse2 = new Scanner (System.in);
-                    System.out.println("Dans quelle ligne voulez vous placer votre jeton?");
-                    colonne2 = reponse2.nextInt();
-                    } 
-                    for (int i = 0;i<5;i++){
-                        plateau.Changementlumiere(i, colonne2-1);
-                    } 
+                    if (joueur1.nbbonus_uneligne !=0){
+                        int ligne2 = 10;
+                        while (ligne2<1 || ligne2>5){
+                            Scanner reponse2 = new Scanner (System.in);
+                            System.out.println("Dans quelle ligne voulez vous placer votre jeton?");
+                            ligne2 = reponse2.nextInt();
+                        } 
+                        for (int i = 0;i<5;i++){
+                            plateau.Changementlumiere(ligne2-1, i);
+                        }
+                    joueur1.utilisernbbonus_uneligne();
+                    }
+                    else{
+                        System.out.println("Mon poto t'en as pas cheh");
+                    }                    
+                }                
+                if (choix2 == 4){                    
+                    if (joueur1.nbbonus_unecolonne !=0){
+                        int colonne2 = 10;
+                        while (colonne2<1 || colonne2>5){
+                        Scanner reponse2 = new Scanner (System.in);
+                        System.out.println("Dans quelle ligne voulez vous placer votre jeton?");
+                        colonne2 = reponse2.nextInt();
+                        } 
+                        for (int i = 0;i<5;i++){
+                            plateau.Changementlumiere(i, colonne2-1);
+                        } 
+                    joueur1.utilisernbbonus_unecolonne();
+                    }
+                    else{
+                        System.out.println("Mon poto t'en as pas cheh");
+                    }
                 }                    
-                }
+                
                 
             }
             

@@ -14,8 +14,43 @@ public class Joueur {
     public Joueur(){
         nbpieces = 500; 
         nbcoups = 0;
+        nbbonus_unecase=0;
+        nbbonus_toutecase=0;
+        nbbonus_uneligne=0;
+        nbbonus_unecolonne=0;
+                
     }
     int nbpieces;
     int nbcoups;
-    ArrayList <Bonus> nbBonus = new ArrayList<>();
+    ArrayList <String> Bonus = new ArrayList<>();
+    int nbbonus_unecase;
+    int nbbonus_uneligne;
+    int nbbonus_unecolonne;
+    int nbbonus_toutecase;
+    
+    public void obtenirnbbonus_unecase(){
+        nbbonus_unecase +=1;
+    }
+    public void obtenirnbbonus_toutecase(){
+        nbbonus_toutecase +=1;
+    }
+    public void obtenirnbbonus_unecolonne(){
+        nbbonus_unecolonne +=1;
+    }
+    public void obtenirnbbonus_uneligne(){
+        nbbonus_uneligne +=1;
+    }
+    public void utilisernbbonus_unecase(){
+        nbbonus_unecase -=1;
+    }
+    public void utilisernbbonus_toutecase(){
+        nbbonus_toutecase -=1;
+    }
+    public void utilisernbbonus_unecolonne(){
+        nbbonus_unecolonne -=1;
+    }
+    public void utilisernbbonus_uneligne(){
+        nbbonus_uneligne -=1;
+    }
+    
 }

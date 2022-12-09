@@ -14,8 +14,9 @@ public class Lightsoff_mallassagne_desgeorge {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Joueur joueur1 = new Joueur();
         Partie partie = new Partie();
-        partie.lancerpartie();
+        partie.lancerpartie(joueur1);
     }
     
 }
