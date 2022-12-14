@@ -14,10 +14,13 @@ public class Cellule2 {
     }
     Lampe2 lumi = new Lampe2();
     
-    public boolean Luminosite(){
-        boolean verif = false;
-        if (lumi.lumiere == "eteint"){
-            verif = true;
+    public String Luminosite(){
+        String verif = "eteint";
+        if (lumi.lumiere == "rouge"){
+            verif = "rouge";
+        }
+        if (lumi.lumiere == "bleu"){
+            verif = "bleu";
         }
         return verif;
     }
