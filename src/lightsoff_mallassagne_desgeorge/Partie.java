@@ -5,7 +5,6 @@
 package lightsoff_mallassagne_desgeorge;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 
 /**
  *
@@ -14,8 +13,10 @@ import java.util.ArrayList;
 public class Partie {
     public Partie(){
         plateau = new PlateauDeJeu();
+        plateau2 = new PlateauDeJeu2();
     }
     PlateauDeJeu plateau;
+    PlateauDeJeu2 plateau2;
     
     public void placerlumiere(){
         int a =0;
@@ -40,6 +41,37 @@ public class Partie {
             int y = (int) (Math.random() * (5));
             if(plateau.Luminosite(x, y) == false){
                 plateau.Changementlumiere(x, y);
+                u+=1;
+            }
+        }
+        
+        
+        }
+    }
+    
+    public void placerlumiere2(){
+        int a =0;
+        int u=0;
+        while (a==0){
+        a =(int) (Math.random() * (26));
+        
+        /**
+         * while(a!=0){
+            for (int i=0;i<5;i++){
+                for (int j=0;j<5;j++){
+                    if(plateau.Luminosite(i, j) == false){
+                        
+                    }
+                }
+                
+            }
+            * */
+        while (u<a){
+            int x ;
+            x= (int) (Math.random() * (5));
+            int y = (int) (Math.random() * (5));
+            if(plateau2.Luminosite(x, y) == "eteint"){
+                plateau2.Changementlumiere(x, y);
                 u+=1;
             }
         }
@@ -210,9 +242,9 @@ public class Partie {
         }
         }
         if(choix11==2){
-        placerlumiere();
-        plateau.affichergrille();
-        while(plateau.etregagnant() == false){
+        placerlumiere2();
+        plateau2.affichergrille();
+        while(plateau2.etregagnant() == false){
             int choix =10;
             System.out.println("Que voulez vous faire? Tapez 1 pour placer un jeton, tapez 2 pour utiliser un bonus");
             Scanner chx = new Scanner (System.in);
@@ -230,18 +262,18 @@ public class Partie {
                 System.out.println("Dans quelle colonne voulez vous placer votre jeton?");
                 colonne = reponse1.nextInt();
                 }            
-                plateau.Changementlumiere(ligne-1, colonne-1);
+                plateau2.Changementlumiere(ligne-1, colonne-1);
                 if(colonne !=5){
-                    plateau.Changementlumiere(ligne-1, colonne);
+                    plateau2.Changementlumiere(ligne-1, colonne);
                 }
                 if(colonne !=1){
-                    plateau.Changementlumiere(ligne-1, colonne-2);
+                    plateau2.Changementlumiere(ligne-1, colonne-2);
                 }
                 if(ligne !=5){
-                    plateau.Changementlumiere(ligne, colonne-1);
+                    plateau2.Changementlumiere(ligne, colonne-1);
                 }
                 if(ligne !=1){
-                    plateau.Changementlumiere(ligne-2, colonne-1);
+                    plateau2.Changementlumiere(ligne-2, colonne-1);
                 }
             }
             if (choix == 2){
@@ -263,7 +295,7 @@ public class Partie {
                         System.out.println("Dans quelle colonne voulez vous placer votre jeton?");
                         colonne = reponse1.nextInt();
                         }                    
-                    plateau.Changementlumiere(ligne-1, colonne-1);
+                    plateau2.Changementlumiere(ligne-1, colonne-1);
                     joueur1.utilisernbbonus_unecase();
                     }
                     else{
@@ -274,7 +306,7 @@ public class Partie {
                     if (joueur1.nbbonus_toutecase !=0){
                         for (int i = 4;i>-1;i--){
                             for (int j = 0;j<5;j++){
-                               plateau.Changementlumiere(i, j);
+                               plateau2.Changementlumiere(i, j);
                             }
                         }
                     joueur1.utilisernbbonus_toutecase();
@@ -293,7 +325,7 @@ public class Partie {
                             ligne2 = reponse2.nextInt();
                         } 
                         for (int i = 0;i<5;i++){
-                            plateau.Changementlumiere(ligne2-1, i);
+                            plateau2.Changementlumiere(ligne2-1, i);
                         }
                     joueur1.utilisernbbonus_uneligne();
                     }
@@ -310,7 +342,7 @@ public class Partie {
                         colonne2 = reponse2.nextInt();
                         } 
                         for (int i = 0;i<5;i++){
-                            plateau.Changementlumiere(i, colonne2-1);
+                            plateau2.Changementlumiere(i, colonne2-1);
                         } 
                     joueur1.utilisernbbonus_unecolonne();
                     }
@@ -323,7 +355,7 @@ public class Partie {
             }
         
             
-            plateau.affichergrille();
+            plateau2.affichergrille();
         }
         }       
         System.out.println("Bien joue!!");
