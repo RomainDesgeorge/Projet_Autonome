@@ -11,6 +11,15 @@ import java.util.ArrayList;
  * @author rom
  */
 public class Joueur {
+    
+    int nbpieces;
+    int nbcoups;
+    ArrayList <String> Bonus = new ArrayList<>();
+    int nbbonus_unecase;
+    int nbbonus_uneligne;
+    int nbbonus_unecolonne;
+    int nbbonus_toutecase;
+    
     public Joueur(){
         nbpieces = 500; 
         nbcoups = 0;
@@ -20,13 +29,6 @@ public class Joueur {
         nbbonus_unecolonne=0;
                 
     }
-    int nbpieces;
-    int nbcoups;
-    ArrayList <String> Bonus = new ArrayList<>();
-    int nbbonus_unecase;
-    int nbbonus_uneligne;
-    int nbbonus_unecolonne;
-    int nbbonus_toutecase;
     
     public void obtenirnbbonus_unecase(){
         nbbonus_unecase +=1;
@@ -51,6 +53,9 @@ public class Joueur {
     }
     public void utilisernbbonus_uneligne(){
         nbbonus_uneligne -=1;
+    }
+    public void setmoney(){
+        nbpieces = 500;
     }
     
 }
